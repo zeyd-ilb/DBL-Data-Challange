@@ -6,11 +6,20 @@ def delete_fields(data, fields_to_delete, parent_key=''):
         for key in list(data.keys()):
             # Build the full key path including parent keys if present
             full_key = f"{parent_key}.{key}" if parent_key else key
+
+            #Check if it is retweet
+            if full_key == "retweeted_status":
+                rt = True
+            elif rt and full_key == "is_quote_status":
+                if data[key] == False:
+                    print('data will be deleted')
+            
+            #Casual check for fields to delete
             if full_key in fields_to_delete:
                 del data[key]
             else:
                 # Recursively call delete_fields with the updated key path
-                delete_fields(data[key], fields_to_delete, full_key)
+                delete_fields(data[key], fields_to_delete,rt, full_key)
     elif isinstance(data, list):
         for item in data:
             # Recursively call delete_fields for each item in the list
