@@ -3,6 +3,21 @@ import json
 import time
 
 # start = time.time()
+
+def check_retweets(full_key,data,key,rt):
+    if full_key == "retweeted_status":
+        rt = True
+    elif rt and full_key == "is_quote_status":
+        if data[key] == False:
+            gbd = True
+            # print('data will be deleted')
+    return data,key, rt,gbd
+
+def check_truncated(full_key,data,key):
+    if full_key == "truncated" and data[key] == True:
+        del data['text']
+    return data,key
+
 def delete_fields(data, fields_to_delete, rt, parent_key='' ):
     gbd = None 
     if isinstance(data, dict):
@@ -10,12 +25,8 @@ def delete_fields(data, fields_to_delete, rt, parent_key='' ):
             # Build the full key path including parent keys if present
             full_key = f"{parent_key}.{key}" if parent_key else key
             
-            if full_key == "retweeted_status":
-                rt = True
-            elif rt and full_key == "is_quote_status":
-                if data[key] == False:
-                    gbd = True
-                   # print('data will be deleted')
+            data,key,rt, gbd = check_retweets(full_key,data,key,rt)
+            data,key = check_truncated(full_key,data,key)
 
             if full_key in fields_to_delete:
                 del data[key]
@@ -48,7 +59,6 @@ def process_json_files(folder_path, fields_to_delete):
                     modified_lines.append(json.dumps(original_data) + '\n')
         with open(file_path,'w+') as f:        
            f.writelines(modified_lines)
-
 
 if __name__ == "__main__":
     folder_path = "C:\\Users\\20223070\\Downloads\\deneme data\\yan"  # Path to the folder containing JSON files
