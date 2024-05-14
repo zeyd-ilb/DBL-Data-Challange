@@ -3,21 +3,20 @@ import json
 import time
 
 # start = time.time()
-
 def delete_fields(data, fields_to_delete, rt, parent_key='' ):
+    gbd = None 
     if isinstance(data, dict):
         for key in list(data.keys()):
             # Build the full key path including parent keys if present
             full_key = f"{parent_key}.{key}" if parent_key else key
             
-            #Check if it is retweet
             if full_key == "retweeted_status":
                 rt = True
             elif rt and full_key == "is_quote_status":
                 if data[key] == False:
-                    print('data will be deleted')
-                    
-            #Casual check for fields to delete
+                    gbd = True
+                   # print('data will be deleted')
+
             if full_key in fields_to_delete:
                 del data[key]
             else:
@@ -27,6 +26,7 @@ def delete_fields(data, fields_to_delete, rt, parent_key='' ):
         for item in data:
             # Recursively call delete_fields for each item in the list
             delete_fields(item, fields_to_delete, rt, parent_key)
+    return gbd
 
 def process_json_files(folder_path, fields_to_delete):
     # Get list of JSON files in the folder
@@ -34,17 +34,20 @@ def process_json_files(folder_path, fields_to_delete):
     for json_file in json_files:
         file_path = os.path.join(folder_path, json_file)
         modified_lines = []
+        deleted_lines = []
 
         with open(file_path,"r+") as f:
             # Read each line from the file and process JSON data
             for line in f:
                 retweeted = False
                 original_data = json.loads(line)
-                delete_fields(original_data, fields_to_delete,retweeted)
-                modified_lines.append(json.dumps(original_data) + '\n')
-        
+                gon_be_deleted = delete_fields(original_data, fields_to_delete,retweeted)
+                if gon_be_deleted:
+                    deleted_lines.append(json.dumps(original_data) + '\n')
+                else: 
+                    modified_lines.append(json.dumps(original_data) + '\n')
         with open(file_path,'w+') as f:        
-            f.writelines(modified_lines)
+           f.writelines(modified_lines)
 
 
 if __name__ == "__main__":
