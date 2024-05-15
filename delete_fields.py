@@ -6,38 +6,59 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='yan_Deneme.log', filemode='w')
 
+truncated_counter = 0
+null_counter = 0
+empty_array_counter = 0
+deleted_counter = 0
+retweet_counter = 0
+deleted_field_counter = 0
+
 start = time.time()
 a = {
     "full_text": None,
     "display_text_range": None,
     "entities": None
 }
-line_number = None
-file_name = None
+line_number = 0
+file_name = 0
 
 def check_null(full_key,data,key):
     skipp = None
+    global null_counter
+    global empty_array_counter
+
     if data[key] is None: 
         del data[key]
         skipp = True
-        logging.info(f"Deleted key {full_key} because it was null")
+        null_counter = null_counter + 1
+        #logging.info(f"Deleted key {full_key} because it was null")
     elif (isinstance(data[key], list) and len(data[key]) == 0):
         del data[key]
         skipp = True
-        logging.info(f"Deleted key {full_key} because it was empthy array")
+        empty_array_counter = empty_array_counter + 1
+        #logging.info(f"Deleted key {full_key} because it was empty array")
     return data,key, skipp
 
 
 def check_retweets_and_deletes(full_key, gbd):
-    if full_key == "retweeted_status" or full_key == "delete":
+    global retweet_counter
+    global deleted_counter
+    if full_key == "retweeted_status":
         gbd = True
-        logging.info(f"Found retweet or deleted status at line {line_number}")
+        #logging.info(f"Found retweet status at line {line_number}")
+        retweet_counter = retweet_counter + 1
+    elif  full_key == "delete":
+        gbd = True
+        #logging.info(f"Found deleted status at line {line_number}")
+        deleted_counter = deleted_counter + 1
     return gbd
 
 def check_truncated(full_key,data,key,tr):
+    global truncated_counter 
     if full_key == "truncated" and data[key] == True:
         tr = True
-        logging.info(f"Found truncated status at key {full_key}")
+        truncated_counter = truncated_counter + 1
+        #logging.info(f"Found truncated status at key {full_key}")
     return data,key, tr
 
 def record_text(data,key,pull_push):
@@ -47,8 +68,8 @@ def record_text(data,key,pull_push):
         a['entities'] = data['entities']
         if "extended_entities" in data:
             a['extended_entities'] = data['extended_entities']
-            logging.info(f"Recorded extended entities for key extended_entities in line {line_number}")
-        logging.info(f"Recorded text and entities for key {key} in line {line_number}")
+            #logging.info(f"Recorded extended entities for key extended_entities in line {line_number}")
+        #logging.info(f"Recorded text and entities for key {key} in line {line_number}")
     else:
         return a
 
@@ -62,30 +83,28 @@ def tranfer_from_extended_to_original(original):
     if "extended_tweet" in original:
         del original['extended_tweet']
         logging.info(f"Transferred data from extended_tweet to original")
-
     return original
 
 def delete_fields(data, fields_to_delete,keys_to_delete, rt, trunc, parent_key='' ):
     gbd = None
     skip = None
+    global deleted_field_counter 
     if isinstance(data, dict):
         for key in list(data.keys()):
             # Build the full key path including parent keys if present
             full_key = f"{parent_key}.{key}" if parent_key else key
-            print("full key is ", full_key)
             gbd = check_retweets_and_deletes(full_key, gbd)
             if gbd:
                 logging.info(f"The line number {line_number} will be deleted from file {file_name} ")
-
                 return gbd , trunc
             data,key, trunc = check_truncated(full_key,data,key,trunc)
             data,key,skip = check_null(full_key, data,key)
 
             if not skip:
                 if (full_key in fields_to_delete or key in keys_to_delete):
-                    print("this one has been deleted" , full_key)
                     del data[key]
-                    logging.info(f"Deleted key {full_key}")
+                    deleted_field_counter = deleted_field_counter + 1
+                    #logging.info(f"Deleted key {full_key}")
 
                 elif trunc and (full_key in fields_to_transfer):
                     record_text(data,key,True)
@@ -124,7 +143,6 @@ def process_json_files(folder_path, fields_to_delete):
                     try:
                         original_data = json.loads(line)
                         gon_be_deleted, truncated = delete_fields(original_data, fields_to_delete,keys_to_delete,retweeted, truncated)
-                        print(f"data is {original_data}")
                         if truncated and not gon_be_deleted:
                             original_data = tranfer_from_extended_to_original(original_data)
                         if not gon_be_deleted: 
@@ -144,5 +162,11 @@ if __name__ == "__main__":
                       "profile_image_url"]
     process_json_files(folder_path, fields_to_delete)
     end = time.time()
+    logging.info(f"deleted fields counter is : {deleted_field_counter}")
+    logging.info(f"empty array counter is : {empty_array_counter}")
+    logging.info(f"null counter is : {null_counter}")
+    logging.info(f"retweeted counter is : {retweet_counter}")
+    logging.info(f"truncated counter is : {truncated_counter}")
+    logging.info(f"retweeted counter is : {retweet_counter}")
     logging.info(f"Processing completed in {end - start} seconds")
     print(end - start)
