@@ -50,14 +50,15 @@ def check_null(full_key,data,key):
     gbd is an abbreviation for "Gonna Be Deleted" which basically means the data will 
     be deleted if it is True.
 """
-def check_retweets_and_deletes(full_key, gbd):
+def check_retweets_and_deletes(full_key, gbd,data,key):
     global retweet_counter
     global deleted_counter
     if full_key == "retweeted_status":
-        gbd = True
+        if str(data[key]["id"]) not in dont_have_originals:
+            gbd = True
+            retweet_counter = retweet_counter + 1
         #logging.info(f"Found retweet status at line {line_number}")
-        retweet_counter = retweet_counter + 1
-    elif  full_key == "delete":
+    if  full_key == "delete":
         gbd = True
         #logging.info(f"Found deleted status at line {line_number}")
         deleted_counter = deleted_counter + 1
@@ -121,7 +122,7 @@ def delete_fields(data, fields_to_delete,keys_to_delete, rt, trunc, parent_key='
             # Build the full key path including parent keys if present
             full_key = f"{parent_key}.{key}" if parent_key else key
 
-            gbd = check_retweets_and_deletes(full_key, gbd)
+            gbd = check_retweets_and_deletes(full_key, gbd,data,key)
             
             #To not run the rest of the code, if the data is retweet or corrupted 
             if gbd:
@@ -189,13 +190,20 @@ def process_json_files(folder_path, fields_to_delete):
            f.writelines(modified_lines) #write only the clean data back to the same file 
 
 if __name__ == "__main__":
-    folder_path = "C:\\Users\\20223070\\Downloads\\deneme data\\yan"  # Path to the folder containing JSON files
+    folder_path = "C:\\Users\\20223070\\Downloads\\deneme data\\tek"  # Path to the folder containing JSON files
     is_it_full_text = ["extended_tweet.full_text"]
     fields_to_delete = ["created_at"]  # List of fields to delete
     keys_to_delete = ["indices","display_text_range","media_url","media_url_https","display_url","expanded_url","id_str","in_reply_to_status_id_str",
                       "in_reply_to_user_id_str","quoted_status_id_str", "display_text_range","default_profile_image","profile_background_image_url",
                       "profile_image_url"]
     
+    dont_have_originals_file = "uncommon_ids.txt"
+    dont_have_originals= []
+    with open(dont_have_originals_file, 'r') as file:
+        # Append each line directly to the list
+        for line in file:
+            dont_have_originals.append(line.strip())  # Append the stripped line directly
+
     process_json_files(folder_path, fields_to_delete)
     
     end = time.time()
