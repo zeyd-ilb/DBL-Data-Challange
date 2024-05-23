@@ -1,9 +1,9 @@
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING
+from pymongo import DeleteOne
 import logging
 
-
 # Configure logging settings
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='remove_duplicates.log', filemode='w')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='remove_duplicates_2.log', filemode='w')
 
 # Read the duplicate IDs from the text file
 def read_duplicate_ids(file_path):
@@ -13,42 +13,45 @@ def read_duplicate_ids(file_path):
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client['DBL']
-collection = db['cleaned_v2']
+collection = db['cleaned_v3']
+
+# Ensure index on 'id' field for faster querying
+collection.create_index([("id", ASCENDING)])
 
 # Path to the file containing duplicate IDs
-duplicate_ids_file = 'duplicates.txt'
+duplicate_ids_file = 'duplicates_on_cleaned.txt'
 
 # Get the list of duplicate IDs
 duplicate_ids = read_duplicate_ids(duplicate_ids_file)
 
-# Remove duplicates from MongoDB
-for dup_id in duplicate_ids:
-    # print("dup id is: ", dup_id)
-    # Find all documents with this duplicate ID
-    # print("\n looking for this id: " , dup_id)
+# Batch size for processing duplicate IDs
+batch_size = 100
+
+# Process duplicates in batches
+for i in range(0, len(duplicate_ids), batch_size):
+    batch_ids = duplicate_ids[i:i+batch_size]
+
+    # Query for documents in the current batch of duplicate IDs
     pipeline = [
-        {"$project":{"id" : 1 , "_id" : 1 }},
-        {"$match": {"id": int(dup_id)}}
+        {"$match": {"id": {"$in": [int(dup_id) for dup_id in batch_ids]}}},
+        {"$project": {"id": 1, "_id": 1}},
+        {"$group": {"_id": "$id", "docs": {"$push": {"_id": "$_id"}}}},
+        {"$match": {"docs.1": {"$exists": True}}}  # Only keep groups with more than one document
     ]
 
-    docs = list(collection.aggregate(pipeline))
+    groups = list(collection.aggregate(pipeline))
 
-    # Keep one document and remove the rest
-    if len(docs) > 1:
-        # Sort documents if necessary to keep a specific one, e.g., by creation date
-        docs_to_delete = docs[1:]  # Keeping the first document and deleting the rest
-        
+    # Prepare bulk operations
+    bulk_operations = []
+    for group in groups:
+        docs_to_delete = group["docs"][1:]  # Keeping the first document and deleting the rest
+
         for doc in docs_to_delete:
-            # print("BU _ID SILINECEK", doc["_id"])
-            logging.info(f"This object_id gonna be deleted {doc['_id']} for this id : {doc['id']}")
-            collection.delete_one({"_id": doc["_id"]})
-    elif len(docs)==1:
-        for i in docs:
-            # print("There aren't more than doc one for this id",i["id"])
-            logging.info(f"There aren't more than 1 doc one for this id {i['id']}")
-    else:
-            # print("No result for ",dup_id)
-            logging.info(f"No result for {dup_id}")
+            logging.info(f"This object_id gonna be deleted {doc['_id']} for this id : {group['_id']}")
+            bulk_operations.append(DeleteOne({"_id": doc["_id"]}))
+
+    # Execute bulk operations
+    if bulk_operations:
+        collection.bulk_write(bulk_operations)
 
 print("Duplicate documents removed.")
-
