@@ -1,0 +1,47 @@
+[
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        $or: [
+          {
+            $and: [
+              {
+                results: []
+              },
+              {
+                "entities.user_mentions.id": {
+                  $in: [
+                    18332190, 56377143, 106062176,
+                    22536055, 124476322, 26223583,
+                    2182373406, 38676903,
+                    1542862735, 253340062,
+                    218730857, 45621423, 20626359
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            results: {
+              $ne: []
+            }
+          }
+        ]
+      }
+  },
+  {
+    $out:
+      /*
+  we gonna have either chains (has at 
+  least one reply) or we get individual
+  tweets that mentions airlines
+  */
+      {
+        db: "DBL",
+        coll: "all_result_v2"
+      }
+  }
+]

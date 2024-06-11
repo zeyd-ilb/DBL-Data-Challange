@@ -1,0 +1,56 @@
+[
+  {
+    $unwind: {
+      path: "$chains"
+    }
+  },
+  {
+    $match: {
+      $or: [
+        {
+          "chains.entities.user_mentions.id": {
+            $in: [18332190]
+          }
+        },
+        {
+          "entities.user_mentions.id": {
+            $in: [18332190]
+          }
+        }
+      ]
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      chains: {
+        $push: "$chains"
+      },
+      root: {
+        $first: "$$ROOT"
+      }
+    }
+  },
+  {
+    $replaceRoot: {
+      newRoot: {
+        $mergeObjects: [
+          "$root",
+          {
+            chains: "$chains"
+          }
+        ]
+      }
+    }
+  },
+  {
+    $out:
+      /**
+       * Provide the name of the output database and collection.
+       */
+      {
+        db: "Chains",
+        coll: "chains_British_Airways"
+      }
+  }
+]

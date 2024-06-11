@@ -1,0 +1,91 @@
+[
+  {
+    $match: {
+      lang: {
+        $eq: "en"
+      }
+    }
+  },
+  {
+    $addFields: {
+      root_user_id: "$user.id"
+    }
+  },
+  {
+    $project: {
+      id: 1,
+      text: 1,
+      in_reply_to_status_id: 1,
+      root_user_id: 1,
+      "entities.user_mentions.id": 1
+    }
+  },
+  {
+    $lookup: {
+      from: "cleaned_v3",
+      localField: "in_reply_to_status_id",
+      foreignField: "id",
+      as: "parentTweet"
+    }
+  },
+  {
+    $match: {
+      $or: [
+        {
+          in_reply_to_status_id: {
+            $exists: 0
+          }
+        },
+        {
+          parentTweet: {
+            $eq: []
+          }
+        }
+      ]
+    }
+  },
+  {
+    $graphLookup: {
+      from: "cleaned_v3",
+      startWith: "$id",
+      connectFromField: "id",
+      connectToField: "in_reply_to_status_id",
+      as: "results",
+      depthField: "depth"
+    }
+  },
+  {
+    $project: {
+      id: 1,
+      text: 1,
+      in_reply_to_status_id: 1,
+      "results.id": 1,
+      "results.user.id": 1,
+      "results.entities.user_mentions.id": 1,
+      "results.in_reply_to_status_id": 1,
+      "results.in_reply_to_user_id": 1,
+      "results.text": 1,
+      "results.depth": 1,
+      root_user_id: 1,
+      "entities.user_mentions.id": 1
+    }
+  },
+  {
+    $set: {
+      results: {
+        $sortArray: {
+          input: "$results",
+          sortBy: {
+            depth: 1
+          }
+        }
+      }
+    }
+  },
+  {
+    $out: {
+      db: "DBL",
+      coll: "all_results"
+    }
+  }
+]
