@@ -24,7 +24,8 @@ The repository is organized as follows:
 The four folders above have respective README files explaining the scripts they contain.
 
 
-## Usage of Sentiment Scores 
+## [Usage of Sentiment Scores] (Demo Codes/Sentiment Scores Graph)
+
 This part explains how to do a sentiment evolution on conversation chains. Our definition of evoulution is comparing the sentiment scores before an airline reponse with after the response. An example graph could look like the one in below:  
 
 ![image](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/bb2dcea1-0d63-433c-81f0-2a4d1cd68a23)
