@@ -10,7 +10,7 @@ client = MongoClient('mongodb://localhost:27017/')
 db = client['Chains']
 collection = db['chains_British_Airways_v3']
 compound_scores_collection = db['compound_scores_3m']
-    
+
 pipeline = [
     {
         '$project': {
@@ -22,7 +22,7 @@ pipeline = [
             'root_user_id':{"$nin":[18332190]}
         }
     },
-     {
+    {
         '$match': {
             'chains': {
                 '$elemMatch': {
@@ -37,25 +37,23 @@ pipeline = [
             }
         }
     }, 
-    # {
-    #     '$match': {
-    #         'chains': {
-    #             '$elemMatch': {
-    #                 '$elemMatch': {
-    #                     'timestamp_ms': 
-    #                       '$expr': {
-                    #             "$and":[
-                    #             {'$gt': [{'$size': '$chains'}, 0]},
-                    #             {"$lt": [{ "$size": "$chains" }, 10]}
-                    #             ]
-    #                       }
-    #                 }
-    #             }
-    #         }
-    #     }
-    # },
+    {
+        '$match': {
+            '$and': [
+                {
+                    'timestamp_ms': {
+                        '$gt': '1564531200000'
+                    }
+                }, {
+                    'timestamp_ms': {
+                        '$lt': '999991558528372181'
+                    }
+                }
+            ]
+        }
+    }
     
-    # {
+    # ,{
     #     '$match': {
     #         '$expr': {
     #             "$and":[
