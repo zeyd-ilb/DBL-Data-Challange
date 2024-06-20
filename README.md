@@ -20,12 +20,9 @@ The repository is organized as follows:
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Folder that includes scripts for data cleaning.
   - `Sentiment-Analysis`: Folder that includes scripts for sentiment analysis.
-
+  - 
 The four folders above have respective README files explaining the scripts they contain.
-  - `create_chains.py`: Script for creating the conversation chains.
-  - `cumulative scores per reply.py`: Script for calculating cumulative scores before a reply from the airline.
-  - `txt fix.py`:  Use it on the ouput of `cumulative_scores_per_reply.py` script. Keeps only the chains that have certain length in the txt file.
-  - `txt to csv.py`: Use it on the ouput of `txt fix.py` script. Convert txt file to proper csv.
+
 
 ## Usage of Sentiment Scores 
 This part explains how to do a sentiment evolution on conversation chains. Our definition of evoulution is comparing the sentiment scores before an airline reponse with after the response. An example graph could look like the one in below:  
