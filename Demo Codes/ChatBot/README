@@ -1,1 +1,22 @@
+When running the ChatBot code, some warning messages will appear. This is a feature of the RoBERTa model and can be safely ignored.
+You will be prompted to enter a tweet, and then the code will return the following:
+- It will give you the calculated compound RoBERTa sentiment score
+- It will give you the broad category (this is for the ctaegorising design of the ChatBot, this can be ignored)
+- It will give you the category it classified your input into
+- It will give you a pre-written response for this category
 
+For example:
+My flight was cancelled and I didn't get a refund
+-0.8368757083080709
+Broad Category: Flight Issues (Confidence: 0.83)
+Specific Category: Cancelled Flight (Confidence: 0.58)
+Response: We're sorry your flight was cancelled. Please contact our support team for rebooking options.
+
+If the sentiment score of the input is less than -0.3 (meaning the calculated compound score by the RoBERTa model), then the model will return:
+- It will give you the calculated compound RoBERTa sentiment score
+- "This tweet is not a complaint!"
+
+For example:
+I love british airways
+0.9633015925064683
+This tweet is not a complaint!
