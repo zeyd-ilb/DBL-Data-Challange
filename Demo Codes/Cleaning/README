@@ -5,7 +5,7 @@ If you want to clean the data by yourself:
   1) run "cleaning.py" on the raw data
   2) import the cleaned data to mongodb with "import_jsons.py"
   3) Configure the file names in "find_retweets.py" then run 
-  4) You need to get ids of retweets that doesn't have originals which is also present in "uncommon.txt"  
-  5) Then run "cleaning.py" with giving "uncommon.txt" into it
+  4) You need to get ids of retweets that doesn't have originals which is also present in "uncommon_ids.txt"  
+  5) Then run "cleaning.py" with giving "uncommon_ids.txt" into it
   6) After the cleaning is done repeat step 2 with the new cleaned data
   7) After import is done run "duplicate_delete.py" on mongodb for the new cleaned data.
