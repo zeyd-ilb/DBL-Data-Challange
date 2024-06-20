@@ -1,9 +1,3 @@
-It seems like I can’t do more advanced data analysis right now. Please try again later.
-
-However, I can help you draft a README file based on the information I gathered. Here's an initial version based on common practices and the contents of your repository:
-
----
-
 # DBL Data Challenge
 
 Welcome to the DBL Data Challenge repository! This project contains various tools and scripts for data processing and analysis, specifically focusing on airline data.
