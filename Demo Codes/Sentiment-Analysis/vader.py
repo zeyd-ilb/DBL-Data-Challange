@@ -14,7 +14,7 @@ sentence = "I like having meetings with my team"
 print(sent_analyzer.polarity_scores(sentence))
 
 # Define the data URL
-data_url = 'https://raw.githubusercontent.com/zeyd-ilb/DBL-Data-Challange/main/airlines-1558527599826.json'
+data_url = 'https://raw.githubusercontent.com/zeyd-ilb/DBL-Data-Challange/Demo Codes/Sentiment-Analysis/airlines-1565119387407.json'
 
 # Fetch the JSON data
 response = requests.get(data_url)
