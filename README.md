@@ -30,9 +30,6 @@ The repository is organized as follows:
   - `txt fix.py`:  Use it on the ouput of `cumulative_scores_per_reply.py` script. Keeps only the chains that have certain length in the txt file.
   - `txt to csv.py`: Use it on the ouput of `txt fix.py` script. Convert txt file to proper csv.
 
-- **Example-data**: Contains example data files.
-  - `airlines-1558527599826.json`: Example dataset for analysis.
-
 ## Usage of Sentiment Scores 
 
 -First adjust the database variables, airline id's, output file name and the time frame that you want your graph to include in the `cumulative_scores_per_reply.py` script. Then run the script and get the output text file. 
