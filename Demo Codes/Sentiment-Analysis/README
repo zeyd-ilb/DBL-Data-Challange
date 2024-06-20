@@ -1,4 +1,4 @@
 The files found in this folder do the following:
-- "RoBERTa_testing.py":
-- "mongo_sentiment_batch.py":
-- "vader.py":
+- "RoBERTa_testing.py": This is the code we used to test RoBERTa on select tweets
+- "mongo_sentiment_batch.py": Applies RoBERTa onto every tweet in the data in the mongo database and stores a new field with the compound sentiment score
+- "vader.py": Runs the VADER sentiment model onto the example data file in this directory
