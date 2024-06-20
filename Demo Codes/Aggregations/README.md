@@ -1,3 +1,3 @@
 The files `Aggregation 1`, `Aggregation 2` and `Aggregation 3` is used in the process of cleaning. They are explained in the flow chart below. The aggregations `respons rate 1.txt` is to used to calculate the response rate for British Airways. `respons rate 1.txt` gives the number of root tweets that mentioned British Airways and `respons rate 2.txt` gives the number of direct replies from British Airways. And by dividing replies to root we get the reponse rate.
 
-![WhatsApp Görsel 2024-06-11 saat 16 00 49_5b1103ab](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/938e8eb0-d98e-4b71-b932-684bef766009)
+![cleaning py (1)](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/a87a78e1-e2ae-4e3a-9334-b46558cbed19)
