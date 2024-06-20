@@ -1,7 +1,7 @@
 First get the cleaned data from the link below. Import the data to mongodb with "import_jsons_w_prepocess.py". After import is done run "duplicate_detele.py". 
 Cleaned Data link: https://drive.google.com/file/d/1-6xE6I_2iiRiGZ-A9UX846D8KEDvT-1J/view
 
-If you want to clean the data by yourself:
+If you want to clean the data yourself:
   1) Run "cleaning.py" on the raw data. This will clean the data. Make sure you change the directory path to where you have your data stored.
   2) Import this cleaned data to mongodb using "import_jsons.py"
   3) Configure the file names in "find_retweets.py" then run
