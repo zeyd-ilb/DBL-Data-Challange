@@ -34,8 +34,12 @@ The repository is organized as follows:
   - `airlines-1558527599826.json`: Example dataset for analysis.
 
 ## Usage of Sentiment Scores 
--First adjust the database variables, airline id's and the time frame that you in `cumulative_scores_per_reply.py` 
--
+
+-First adjust the database variables, airline id's, output file name and the time frame that you want your graph to include in the `cumulative_scores_per_reply.py` script. Then run the script and get the output text file. 
+-In `txt fix.py`, adjust the input and output file names (as you wish) and the desired lenght of the conversation chains. The input must be the ouput file of the `cumulative_scores.py` script.
+-In `txt to csv.py`, adjust the input file name. The input must be the ouput file of `txt fix.py`
+-Then you can upload the csv file to excel or google sheets, and create the charts that you wish. 
+
 ## Installation
 
 To use the scripts in this repository, you need to have Python installed. Clone the repository and install the required dependencies.
