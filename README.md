@@ -17,7 +17,6 @@ This repository is designed to help with various data challenges, including data
 
 The repository is organized as follows:
 
-- **Demo Codes**: Contains scripts for different tasks.
   - `Aggregations`: Scripts for data aggregation.
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Folder that includes scripts for data cleaning.
