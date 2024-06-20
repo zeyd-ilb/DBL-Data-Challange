@@ -23,7 +23,7 @@ The repository is organized as follows:
   - `Cleaning`: Folder that includes scripts for data cleaning.
   - `Graphs`: Contains data we used for the plots and instructions to reproduce them.
   - `Sentiment Scores Graph`: Code for creating testing sentiment evolution and creating a graph for it.
-  - `Sentiment-Analysis`: Folder that includes scripts for sentiment analysis.
+  - `Sentiment Analysis`: Folder that includes scripts for sentiment analysis.
     
 The four folders above have respective README files explaining the scripts they contain.
 
