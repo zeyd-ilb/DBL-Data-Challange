@@ -8,9 +8,6 @@ Welcome to the DBL Data Challenge repository! This project contains various tool
 - [Folder Structure](#folder-structure)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Project Overview
 
@@ -58,17 +55,3 @@ Navigate to the respective directories and run the scripts as needed. For exampl
 cd "Demo Codes"
 python vader.py
 ```
-
-### Example Data
-
-Example data is provided in the `Example-data` directory. Use these files to test and understand how the scripts work.
-
-## Contributing
-
-We welcome contributions from the community! To contribute, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit them (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
