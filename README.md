@@ -16,11 +16,11 @@ This repository is designed to help with various data challenges, including data
 ## Folder Structure
 
 The repository is organized as follows:
-
   - `Aggregations`: Scripts for data aggregation.
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Folder that includes scripts for data cleaning.
   - `Sentiment-Analysis`: Folder that includes scripts for sentiment analysis.
+These four folders have respective README files explaining the scripts they contain.
   - `create_chains.py`: Script for creating the conversation chains.
   - `cumulative scores per reply.py`: Script for calculating cumulative scores before a reply from the airline.
   - `txt fix.py`:  Use it on the ouput of `cumulative_scores_per_reply.py` script. Keeps only the chains that have certain length in the txt file.
