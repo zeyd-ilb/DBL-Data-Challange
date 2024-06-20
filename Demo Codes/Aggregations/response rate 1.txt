@@ -29,16 +29,4 @@
         "entities.user_mentions.id": 18332190
       }
   }
-  // {
-  //   $match:
-  //     /**
-  //      * query: The query in MQL.
-  //      */
-  //     {
-  //       "user.id": 18332190,
-  //       in_reply_to_status_id: {
-  //         $exists: 1
-  //       }
-  //     }
-  // }
 ]
