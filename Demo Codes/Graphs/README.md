@@ -3,4 +3,11 @@
 - `Reply Rate analysis.xlsx` : Two aggregation files Response Rate 1.txt and Response Rate 2.txt from the [Aggregations](../Aggregations/) folder have been used.
 
 The graphs are :
-**`Poster Presentation Graph.xlsx`**
+
+**Poster Presentation Graph**
+
+![image](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/bb2dcea1-0d63-433c-81f0-2a4d1cd68a23)
+
+**Response Rate Analysis**
+
+![image](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/2a9f804f-d32e-4118-a327-08db0fede100)
