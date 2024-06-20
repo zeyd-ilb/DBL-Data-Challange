@@ -24,7 +24,7 @@ The repository is organized as follows:
 The four folders above have respective README files explaining the scripts they contain.
 
 
-## [Usage of Sentiment Scores](Demo Codes)
+## [Usage of Sentiment Scores](Demo%20Codes/)
 
 This part explains how to do a sentiment evolution on conversation chains. Our definition of evoulution is comparing the sentiment scores before an airline reponse with after the response. An example graph could look like the one in below:  
 
