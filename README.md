@@ -35,7 +35,7 @@ The repository is organized as follows:
 
 ## Usage of Sentiment Scores 
 -First adjust the database variables, airline id's and the time frame that you in `cumulative_scores_per_reply.py` 
-
+-
 ## Installation
 
 To use the scripts in this repository, you need to have Python installed. Clone the repository and install the required dependencies.
