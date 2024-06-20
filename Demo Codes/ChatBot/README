@@ -12,6 +12,8 @@ Broad Category: Flight Issues (Confidence: 0.83)
 Specific Category: Cancelled Flight (Confidence: 0.58)
 Response: We're sorry your flight was cancelled. Please contact our support team for rebooking options.
 
+-----------------------------------
+
 If the sentiment score of the input is less than -0.3 (meaning the calculated compound score by the RoBERTa model), then the model will return:
 - It will give you the calculated compound RoBERTa sentiment score
 - "This tweet is not a complaint!"
