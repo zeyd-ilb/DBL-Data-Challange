@@ -11,7 +11,7 @@ Welcome to the DBL Data Challenge repository! This project contains various tool
 
 ## Project Overview
 
-This repository is designed to help with various data challenges, including data aggregation, cleaning, and analysis using machine learning models. It includes demo codes for different tasks and example data to get you started.
+This repository is designed to help with various data challenges, including data aggregation, cleaning, and analysis using machine learning models. It includes demo codes for our ChatBot and making the visualisations that can be found in our poster.
 
 ## Folder Structure
 
