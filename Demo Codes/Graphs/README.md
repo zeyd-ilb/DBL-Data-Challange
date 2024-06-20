@@ -1,4 +1,3 @@
 - `Poster Presentation Graph.xlsx` : Follow the instructions in `/Sentiment-Scores-Graph` folder, to get the data in the file.
 - `Sentiment Scores for Responses Similar to Chatbot Outputs.xlsx`: The Data has been chosen manually and the sentiment scores are extracted directly from the database.
-- `Reply Rate analysis.xlsx`: Two aggregation files `Reply Rate 1.txt` and `Reply Rate 2.txt` from the (../Aggregations) folder has been used
-- - **[Reply Rate analysis.xlsx](path/to/Reply%20Rate%20analysis.xlsx)**: Two aggregation files **[Reply Rate 1.txt](../Aggregations/Reply%20Rate%201.txt)** and **[Reply Rate 2.txt](../Aggregations/Reply%20Rate%202.txt)** from the [Aggregations](../Aggregations/) folder have been used.
+- Reply Rate analysis.xlsx: Two aggregation files **[Response Rate 1.txt](../Aggregations/Response%20Rate%201.txt)** and **[Response Rate 2.txt](../Aggregations/Response%20Rate%202.txt)** from the [Aggregations](../Aggregations/) folder have been used.
