@@ -1,0 +1,44 @@
+[
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        lang: "en"
+      }
+  },
+  {
+    $project:
+      /**
+       * specifications: The fields to
+       *   include or exclude.
+       */
+      {
+        in_reply_to_user_id: 1,
+        "user.id": 1,
+        "entities.user_mentions.id": 1
+      }
+  },
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        "entities.user_mentions.id": 18332190
+      }
+  }
+  // {
+  //   $match:
+  //     /**
+  //      * query: The query in MQL.
+  //      */
+  //     {
+  //       "user.id": 18332190,
+  //       in_reply_to_status_id: {
+  //         $exists: 1
+  //       }
+  //     }
+  // }
+]
