@@ -11,6 +11,7 @@ db = client['Chains']
 collection = db['chains_British_Airways_v3']
 compound_scores_collection = db['compound_scores_3m']
 
+airline_id= 18332190
 pipeline = [
     {
         '$project': {
@@ -19,7 +20,7 @@ pipeline = [
     },
     {
         '$match': {
-            'root_user_id':{"$nin":[18332190]}
+            'root_user_id':{"$nin":[airline_id]}
         }
     },
     {
@@ -29,7 +30,7 @@ pipeline = [
                     '$elemMatch': {
                         'in_reply_to_user_id': {
                             '$in': [
-                                18332190
+                                airline_id
                             ]
                         }
                     }
@@ -110,7 +111,7 @@ for doc in documents:
                 user_id = str(item["user"]['id'])
                 item_id = str(item['id'])
                 # Check if it is a reply from the airline
-                if user_id == "18332190":  
+                if user_id == str(airline_id):  
                     # Reset cumulative_score for the next segment
                     if item_number != 0:
                         cumulative_score = cumulative_score/item_number
@@ -135,6 +136,5 @@ for doc in documents:
 
 # Write the chains to a text file
 input_file_1 = 'chains_scores_v1.txt'  # Replace with your input text file name
-output_file_1 = 'fixed_scores_v1.txt'  # Replace with your input text file name
 with open(input_file_1, "w") as file:
     file.write(f"{cumulative_scores_total}\n")
