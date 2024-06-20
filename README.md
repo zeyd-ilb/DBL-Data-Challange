@@ -21,13 +21,13 @@ The repository is organized as follows:
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Scripts for data cleaning.
   - `MongoCompound.py`: MongoDB compound queries.
-  - `RoBERTa_compound.py`: RoBERTa model scripts.
-  - `create_chains.py`: Script for creating chains.
-  - `cumulative scores per reply.py`: Script for calculating cumulative scores.
-  - `import_jsons.py`: Script for importing JSON files.
+  - `RoBERTa_compound.py`: RoBERTa model scripts. It makes compound sentiment scores for selected text.
+  - `create_chains.py`: Script for creating the conversation chains.
+  - `cumulative scores per reply.py`: Script for calculating cumulative scores before a reply from the airline.
+  - `import_jsons.py`: Script for importing JSON files into mongodb.
   - `vader.py`: VADER sentiment analysis script.
-  - `txt fix.py`: Keep only the chains that have certain length in the txt file.
-  - `txt to csv.py`:Convert txt file to proper csv.
+  - `txt fix.py`:  Use it on the ouput of `cumulative_scores_per_reply.py` script. Keeps only the chains that have certain length in the txt file.
+  - `txt to csv.py`: Use it on the ouput of `txt fix.py` script. Convert txt file to proper csv.
 
 - **Example-data**: Contains example data files.
   - `airlines-1558527599826.json`: Example dataset for analysis.
