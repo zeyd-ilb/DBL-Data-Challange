@@ -46,4 +46,5 @@ git clone https://github.com/yourusername/DBL-Data-Challange.git
 cd DBL-Data-Challange
 pip install -r requirements.txt
 ```
+## Flow Chart for Cleaning  
 ![WhatsApp Görsel 2024-06-11 saat 16 00 49_8e0fa7b2](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/6afb6c15-7617-4fed-b3fc-aa3259d7634a)
