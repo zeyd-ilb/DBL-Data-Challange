@@ -7,7 +7,6 @@ Welcome to the DBL Data Challenge repository! This project contains various tool
 - [Project Overview](#project-overview)
 - [Folder Structure](#folder-structure)
 - [Installation](#installation)
-- [Usage](#usage)
 
 ## Project Overview
 
@@ -43,15 +42,4 @@ To use the scripts in this repository, you need to have Python installed. Clone 
 git clone https://github.com/yourusername/DBL-Data-Challange.git
 cd DBL-Data-Challange
 pip install -r requirements.txt
-```
-
-## Usage
-
-### Running Scripts
-
-Navigate to the respective directories and run the scripts as needed. For example, to run the VADER sentiment analysis:
-
-```sh
-cd "Demo Codes"
-python vader.py
 ```
