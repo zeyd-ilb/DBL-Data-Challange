@@ -30,9 +30,6 @@ The repository is organized as follows:
 - **Example-data**: Contains example data files.
   - `airlines-1558527599826.json`: Example dataset for analysis.
 
-- **Removed**: Contains scripts and data that are no longer in use.
-  - `Reviews`: Folder with review data.
-  - `mongodb_run_query.py`: Script to run MongoDB queries.
 
 ## Installation
 
