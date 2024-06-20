@@ -10,4 +10,4 @@ If you want to clean the data by yourself:
   6) After the cleaning is done repeat step 2 with the new cleaned data
   7) After import is done run "duplicate_delete.py" on mongodb for the new cleaned data.
 
-![WhatsApp Görsel 2024-06-11 saat 16 00 49_f7b6d4f0](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/b3fbdca5-797e-4588-b607-db8c4796b863)
+![cleaning py (1)](https://github.com/zeyd-ilb/DBL-Data-Challange/assets/61659041/1cc14951-106f-4acc-8a82-a3a7be2b09ca)
