@@ -7,6 +7,7 @@ Welcome to the DBL Data Challenge repository! This project contains various tool
 
 - [Project Overview](#project-overview)
 - [Folder Structure](#folder-structure)
+- [Folder Structure](#Usage-of-Sentiment-Scores)
 - [Installation](#installation)
 
 ## Project Overview
