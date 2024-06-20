@@ -134,7 +134,7 @@ if __name__ == "__main__":
     # File paths
     all_rt_ids_file = 'sorted_ids.txt'
     ids_to_delete_file = 'common_ids.txt'
-    output_file = 'uncommon_ids.txt'
+    output_file = 'orphan_RTs_ids.txt'
 
     # Remove the IDs
     find_uncommon_ids(all_rt_ids_file, ids_to_delete_file, output_file)
