@@ -1,4 +1,4 @@
 The files found in this folder do the following:
 - "RoBERTa_testing.py":
-- 
-- 
+- "mongo_sentiment_batch.py":
+- "vader.py":
