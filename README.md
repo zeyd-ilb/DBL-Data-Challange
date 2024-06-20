@@ -20,6 +20,7 @@ The repository is organized as follows:
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Folder that includes scripts for data cleaning.
   - `Sentiment-Analysis`: Folder that includes scripts for sentiment analysis.
+
 These four folders have respective README files explaining the scripts they contain.
   - `create_chains.py`: Script for creating the conversation chains.
   - `cumulative scores per reply.py`: Script for calculating cumulative scores before a reply from the airline.
