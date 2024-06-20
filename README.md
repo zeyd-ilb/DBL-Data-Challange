@@ -26,9 +26,13 @@ The repository is organized as follows:
   - `cumulative scores per reply.py`: Script for calculating cumulative scores.
   - `import_jsons.py`: Script for importing JSON files.
   - `vader.py`: VADER sentiment analysis script.
+  - `txt fix.py`: Keep only the chains that have certain length in the txt file.
+  - `txt to csv.py`:Convert txt file to proper csv.
 
 - **Example-data**: Contains example data files.
   - `airlines-1558527599826.json`: Example dataset for analysis.
+
+## Usage of Sentiment Scores 
 
 
 ## Installation
