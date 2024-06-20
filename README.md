@@ -20,11 +20,11 @@ The repository is organized as follows:
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Folder that includes scripts for data cleaning.
   - `Sentiment-Analysis`: Folder that includes scripts for sentiment analysis.
-  - 
+  - `Sentiment Analysis Graph`: Code for creating testing sentiment evolution and creating a graph for it.
 The four folders above have respective README files explaining the scripts they contain.
 
 
-[##Usage of Sentiment Scores] (Demo Codes/Sentiment Scores Graph)
+## [Usage of Sentiment Scores] (Demo Codes/Sentiment Scores Graph)
 
 This part explains how to do a sentiment evolution on conversation chains. Our definition of evoulution is comparing the sentiment scores before an airline reponse with after the response. An example graph could look like the one in below:  
 
