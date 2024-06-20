@@ -50,7 +50,7 @@ def calculate_compound_score(scores, config):
         label = config.id2label[i]
         weight = label_to_weight[label]
         compound_score += scores[i] * weight
-        print(compound_score)
+    print(compound_score)
     return compound_score
 
 # Run the sentiment analysis using RoBERTa
