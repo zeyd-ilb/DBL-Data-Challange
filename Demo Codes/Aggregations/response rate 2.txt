@@ -1,0 +1,45 @@
+[
+  {
+    $project:
+      /**
+       * specifications: The fields to
+       *   include or exclude.
+       */
+      {
+        results: 0,
+        _id: 0
+      }
+  },
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        root_user_id: {
+          $ne: 19332190
+        },
+        "entities.user_mentions.id": 18332190
+      }
+  },
+  {
+    $match: {
+      chains: {
+        $elemMatch: {
+          $elemMatch: {
+            "user.id": {
+              $in: [18332190]
+            }
+          }
+        }
+      },
+      chains: {
+        $elemMatch: {
+          $elemMatch: {
+            depth: 0
+          }
+        }
+      }
+    }
+  }
+]
