@@ -21,12 +21,9 @@ The repository is organized as follows:
   - `Aggregations`: Scripts for data aggregation.
   - `ChatBot`: Code for chatbot functionalities.
   - `Cleaning`: Folder that includes scripts for data cleaning.
-  - `MongoCompound.py`: MongoDB compound queries.
-  - `RoBERTa_compound.py`: RoBERTa model scripts. It makes compound sentiment scores for selected text.
+  - `Sentiment-Analysis`: Folder that includes scripts for sentiment analysis.
   - `create_chains.py`: Script for creating the conversation chains.
   - `cumulative scores per reply.py`: Script for calculating cumulative scores before a reply from the airline.
-  - `import_jsons.py`: Script for importing JSON files into mongodb. Usefull to import multiple json files at once.
-  - `vader.py`: VADER sentiment analysis script.
   - `txt fix.py`:  Use it on the ouput of `cumulative_scores_per_reply.py` script. Keeps only the chains that have certain length in the txt file.
   - `txt to csv.py`: Use it on the ouput of `txt fix.py` script. Convert txt file to proper csv.
 
