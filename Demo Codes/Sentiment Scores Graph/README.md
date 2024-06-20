@@ -1,4 +1,4 @@
-  - `create_chains.py`: Script for creating the conversation chains.
+  - `create_chains.py`: Script for creating the conversation chains. Groups all tweet by their root tweet. 
   - `cumulative scores per reply.py`: Script for calculating cumulative scores before a reply from the airline.
   - `txt fix.py`:  Use it on the ouput of `cumulative_scores_per_reply.py` script. Keeps only the chains that have certain length in the txt file.
   - `txt to csv.py`: Use it on the ouput of `txt fix.py` script. Convert txt file to proper csv.
